@@ -35,6 +35,12 @@ input {
   color: currentColor;
   font-family: inherit;
   font-size: inherit;
+  line-height: inherit;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 ul,
