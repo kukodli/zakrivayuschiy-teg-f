@@ -12,7 +12,7 @@
 
 .page {
   color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font), sans-serif;
   background-image: var(--gradient);
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,7 +35,7 @@
 
 .header-logo-group-container {
   border: var(--border);
-  padding-inline: clamp(16px, 16px + (122.5 - 16) * ((100vw - 375px) / (1440 - 375)), 122.5px);;
+  padding-inline: clamp(16px, 16px + (122.5 - 16) * ((100vw - 375px) / (1440 - 375)), 122.5px);
   padding-block: clamp(122px, 122px + (130 - 122) * ((100vw - 375px) / (1440 - 375)), 130px);
   background-color: var(--bg-color);
   block-size: clamp(
@@ -150,7 +150,7 @@
 
 .card-info {
   display: grid;
-  grid-template-rows: repeat(3, min-content); 
+  grid-template-rows: repeat(3, min-content);
   gap: 25px;
   padding:25px;
   font-size: 18px;
@@ -180,7 +180,6 @@
   font-size: 14px;
   font-style: normal;
   line-height: 90%;
-  text-align: center;
   text-align: center;
   mix-blend-mode: difference;
   white-space: nowrap;
@@ -286,8 +285,7 @@
   z-index: 1;
   background-color: var(--accent-color);
   transition: transform 0.5s ease-in-out;
-  transform: scaleX(0);
-  transform: translateX(-100%);
+  transform: translateX(-100%) scaleX(0);
 }
 
 .button:focus {
