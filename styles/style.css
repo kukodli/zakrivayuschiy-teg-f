@@ -26,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  block-size: clamp(
+  min-block-size: clamp(
     527px,
     527px + ((100vw - 375px) / (1440 - 375)) * (566 - 527),
     566px
@@ -38,7 +38,7 @@
   padding-inline: clamp(16px, 16px + (122.5 - 16) * ((100vw - 375px) / (1440 - 375)), 122.5px);
   padding-block: clamp(122px, 122px + (130 - 122) * ((100vw - 375px) / (1440 - 375)), 130px);
   background-color: var(--bg-color);
-  block-size: clamp(
+  min-block-size: clamp(
     327px,
     327px + ((100vw - 375px) / (1440 - 375)) * (368 - 327),
     368px
@@ -50,21 +50,24 @@
 }
 
 .header-logo-group {
-  font-family: var(--accent-font), sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-style: normal;
   line-height: 1;
-  text-align: center;
   text-transform: uppercase;
 }
 
 .header-logo-group__title {
-  margin-block-end: 17px;
-  font-size: clamp(49px, 43.37px + 1.50vw, 65px);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 }
 
 .header-logo-group__subtitle {
-  font-size: clamp(14px, 10.8px + 0.85vw, 23px);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
 }
 
 .main {
@@ -131,10 +134,10 @@
 
 .card-image__label {
   position: absolute;
-  top: 25px;
+  top: 27px;
   right: 25px;
   opacity: 0.5;
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
@@ -150,7 +153,6 @@
 
 .card-info {
   display: grid;
-  grid-template-rows: repeat(3, min-content);
   gap: 25px;
   padding:25px;
   font-size: 18px;
@@ -162,12 +164,12 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  gap: 7px;
+  gap: 4px;
 }
 
 .card__like-button {
-  padding: 6px 17px;
-  inline-size: 130px;
+  padding-block: 6px;
+  min-inline-size: 130px;
 }
 
 .button__text {
@@ -175,7 +177,7 @@
   z-index: 2;
   overflow: hidden;
   color: var(--color-button);
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
@@ -206,10 +208,6 @@
 
 .core {
   transition: fill 0.3s linear 0.03s;
-}
-
-.sparks {
-  transition: fill 0.3s linear;
 }
 
 .like-icon:hover .core {
@@ -309,20 +307,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   margin-inline: auto;
   margin-block-start: 50px;
   margin-block-end: 100px;
-  padding: 16px 18px;
+  padding: 15px 19px;
   background-color: var(--bg-color);
+}
+
+.save__svg {
+  width: 21px;
+  height: 21px;
 }
 
 .modal {
   display: none;
-  padding: 30px 40px;
-  overflow: hidden;
+  padding: 27px;
   max-inline-size: 353px;
-  max-block-size: 191px;
+  min-block-size: 191px;
 }
 
 .modal[open] {
@@ -356,7 +358,7 @@
 }
 
 .modal__text-wrapper {
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
@@ -365,8 +367,17 @@
 }
 
 .modal__btn-ok {
-  padding: 6px;
+  padding-block-start: 7px;
+  padding-block-end: 6px;
   inline-size: 100%;
+}
+
+@supports (text-stroke: 1px var(--shadow-color)) or (-webkit-text-stroke: 1px var(--shadow-color)) {
+  .card-image__label {
+    text-shadow: none;
+    text-stroke: 1px var(--shadow-color);
+    -webkit-text-stroke: 1px var(--shadow-color);
+  }
 }
 
 @media (min-width: 376) {
@@ -385,9 +396,20 @@
   .save {
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+  }
+
+  .save__svg {
+    width: 28px;
+    height: 28px;
   }
 
   .modal {
+    padding-inline: 37px;
     max-inline-size: 341px;
+  }
+
+  .modal__btn-ok {
+    padding-block-end: 7px;
   }
 }
